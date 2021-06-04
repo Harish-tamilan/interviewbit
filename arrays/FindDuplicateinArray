@@ -1,0 +1,32 @@
+public class Solution {
+    
+    public int repeatedNumber(List<Integer> list) {
+        
+        int i, slow=0, fast=0, n = list.size();
+        int count=0;
+        
+        while(count<n)
+        {
+            slow = list.get(slow);
+            fast = list.get(list.get(fast));
+            if(slow==fast)
+                break;
+            count++;
+        }
+        
+        if(count==n)
+            return -1;
+            
+        fast = 0;
+        
+        while(slow!=fast)
+        {
+            slow = list.get(slow);
+            fast = list.get(fast);
+        }
+        
+        return slow;
+        
+    }
+    
+}
