@@ -1,0 +1,33 @@
+import java.math.*;
+
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    
+    public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
+        int n = A.size();
+        long sum = 0 ;
+        long sq = 0 ; 
+        long nsum = 0 ;
+        long nsq = 0 ;
+         for(int i = 0 ;i < n ;i++){
+            long temp = (long)A.get(i);
+            sum  =sum + temp;
+            sq  = sq + temp*temp;
+            
+            
+            long ac = i+1L;
+            nsum += ac;
+            nsq = nsq + ac*ac;
+        }
+        
+        sum = nsum - sum;
+        sq = nsq  - sq ;
+        sq/=sum;
+        long  b =(sum+sq)/2;
+        long a = (sq - b);
+        ArrayList<Integer> asn = new ArrayList<>();
+        asn.add((int ) a);
+        asn.add((int ) b);
+        return asn;
+    }
+}
