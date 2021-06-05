@@ -1,0 +1,64 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> generateMatrix(int n) {
+        
+        int left=0, right=n-1, top=0, bottom=n-1, i, j;
+        
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        
+        for(i=0;i<n;i++)
+        {
+            list.add(new ArrayList<>());
+            for(j=0;j<n;j++)
+            {
+                list.get(i).add(0);
+            }
+        }
+        
+        int count=1;
+        
+        n = n*n;
+        
+        while(count<=n)
+        {
+            i= top;
+            j=left;
+            while(j<=right)
+            {
+                list.get(i).set(j,count);
+                count++;
+                j++;
+            }
+            top++;
+            j=right;
+            i=top;
+            while(i<=bottom)
+            {
+                list.get(i).set(j,count);
+                count++;
+                i++;
+            }
+            right--;
+            j=right;
+            i=bottom;
+            while(j>=left)
+            {
+                list.get(i).set(j,count);
+                count++;
+                j--;
+            }
+            bottom--;
+            i=bottom;
+            j=left;
+            while(i>=top)
+            {
+                list.get(i).set(j,count);
+                count++;
+                i--;
+            }
+            left++;
+        }
+        
+        return list;
+
+    }
+}
