@@ -1,0 +1,39 @@
+public class Solution {
+    public void setZeroes(ArrayList<ArrayList<Integer>> list) {
+        
+        List<Integer> row = new ArrayList<>();
+        List<Integer> col = new ArrayList<>();
+        
+        int i,j,r=list.size(),c=list.get(0).size(),k;
+        
+        for(i=0;i<r;i++)
+            row.add(1);
+        
+        for(i=0;i<c;i++)
+            col.add(1);
+        
+        for(i=0;i<r;i++)
+        {
+            for(j=0;j<c;j++)
+            {
+                if(list.get(i).get(j)==0)
+                {
+                    row.set(i,0);
+                    col.set(j,0);
+                }
+            }
+        }
+        
+        for(i=0;i<r;i++)
+        {
+            for(j=0;j<c;j++)
+            {
+                if(row.get(i)==0 || col.get(j)==0)
+                {
+                    list.get(i).set(j,0);
+                }
+            }
+        }
+    
+    }
+}
