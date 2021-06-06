@@ -1,0 +1,50 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST
+    public int repeatedNumber(final List<Integer> a) {
+        int i,n=a.size(),count1=0,num1=-1,num2=-1,count2=0;
+        
+        for(int no:a)
+        {
+            if(no==num1)
+                count1++;
+            else if(no==num2)
+                count2++;
+            else if(count1==0)
+            {
+                count1 = 1;
+                num1 = no;
+            }
+            else if(count2==0)
+            {
+                count2 = 1;
+                num2 = no;
+            }
+            else
+            {
+                count1--;
+                count2--;
+            }
+        }
+        
+        count1=0;
+        count2=0;
+        for(int no:a)
+        {
+            if(no==num1)
+                count1++;
+            else if(no==num2)
+                count2++;
+        }
+        if(count1>count2)
+        {
+            if(count1>n/3)
+                return num1;
+        }
+        else
+        {
+            if(count2>n/3)
+                return num2;
+        }
+        return -1;
+    }
+}
