@@ -1,0 +1,43 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    static class Pair
+    {
+        int val;
+        int ind;
+        
+        public Pair(int v, int i)
+        {
+            val = v;
+            ind = i;
+        }
+    }
+    public int maximumGap(final List<Integer> a) {
+        List<Pair> list = new ArrayList<>();
+        //List<Integer> li = new ArrayList<>();
+        //HashMap<Integer,List<Integer>> map = new HashMap<>();
+        int i=0,j;
+        for(int no:a)
+        {
+            Pair p = new Pair(no,i);
+            list.add(p);
+            i++;
+        }
+        
+        Collections.sort(list, new Comparator<Pair>(){
+            public int compare(Pair a, Pair b)
+            {
+                return a.val - b.val;
+            }
+        });
+        
+       // System.out.println("List is "+list);
+        int ans=0, min = Integer.MAX_VALUE;
+        
+        for(i=0;i<list.size();i++)
+        {
+            min = Math.min(min, list.get(i).ind);
+            ans = Math.max(ans, list.get(i).ind-min);
+        }
+        return ans;
+    }
+}
