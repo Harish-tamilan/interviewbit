@@ -1,0 +1,45 @@
+public class Solution {
+    public ArrayList<Integer> flip(String s) {
+        int i, j, diff=0, max=0, start=0;
+        
+        int n = s.length();
+        
+        char c;
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+//         list.add(-1);
+//         list.add(-1);
+        
+        for(i=0;i<n;i++)
+        {
+            if(s.charAt(i)=='0')
+                diff++;
+            else
+                diff--;
+            if(diff>max)
+            {
+                max = diff;
+                if(list.size()>0)
+                {
+                    list.set(0,start+1);
+                    list.set(1,i+1);
+                }
+                else
+                {
+                    list.add(start+1);
+                    list.add(i+1);
+                }
+            }
+            
+            if(diff<0)
+            {
+                start = i+1;
+                diff = 0;
+            }
+            //Sysout
+        }
+    
+        return list;
+    }
+}
