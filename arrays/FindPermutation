@@ -1,0 +1,38 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> findPerm(final String A, int B) {
+        
+        int i,start=1,end=B;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        
+        char c = A.charAt(0);
+        
+        if(c=='I')
+        {
+            list.add(1);
+            start++;
+        }
+        else
+        {
+            list.add(end);
+            end--;
+        }
+        
+        for(i=1;i<B-1;i++)
+        {
+            c = A.charAt(i);
+            if(c=='I')
+            {
+                list.add(start);
+                start++;
+            }
+            else
+            {
+                list.add(end);
+                end--;
+            }
+        }
+        list.add(end);
+        return list;
+    }
+}
