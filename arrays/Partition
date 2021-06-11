@@ -1,0 +1,42 @@
+public class Solution {
+    public int solve(int A, ArrayList<Integer> B) {
+        
+        int sum=0,i,j,total=0,n=B.size(),temp=0;
+        int[] count = new int[n];
+        
+        for(i=0;i<n;i++)
+        {
+            sum += B.get(i);
+        }
+        
+        if(sum%3!=0)
+            return 0;
+        
+        for(i=n-1;i>=0;i--)
+        {
+            temp += B.get(i);
+            if(temp==sum/3)
+            {
+                count[i] = 1;
+            }
+        }
+        
+        temp=0;
+        
+        for(i=0;i<n;i++)
+        {
+            temp += B.get(i);
+            if(temp==sum/3)
+            {
+                for(j=i+2;j<n;j++)
+                {
+                    if(count[i]==1)
+                    {
+                        total +=1;
+                    }
+                }
+            }
+        }
+        return total;
+    }
+}
