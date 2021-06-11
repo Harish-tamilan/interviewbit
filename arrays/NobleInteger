@@ -1,0 +1,37 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A) {
+        
+        int i, j, n = A.size();        
+        int[] count = new int[n+1];
+        for(i=0;i<n;i++)
+        {
+            if(A.get(i)<0)
+                continue;
+            else if(A.get(i)>=n)
+            {
+                count[n]++;
+            }
+            else
+            {
+                count[A.get(i)]++;
+            }
+        }
+        
+        int total = count[n];
+        
+        for(i=n-1;i>=0;i--)
+        {
+            if(total==i && count[i]>0)
+            {
+                return 1;
+            }
+            else if(total>i)
+            {
+                return -1;
+            }
+            total += count[i];
+        }
+        
+        return -1;
+    }
+}
