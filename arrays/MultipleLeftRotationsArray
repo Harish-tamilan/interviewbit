@@ -1,0 +1,23 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> solve(ArrayList<Integer> A, ArrayList<Integer> B) {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        ArrayList<Integer> li;
+        
+        int i,n=A.size(),d = B.size(),t,j;
+        for(i=0;i<d;i++)
+        {
+            t = B.get(i)%n;
+            li = new ArrayList<>();
+            for(j=t;j<n;j++)
+            {
+                li.add(A.get(j));
+            }
+            for(j=0;j<t;j++)
+            {
+                li.add(A.get(j));
+            }
+            list.add(li);
+        }
+        return list;
+    }
+}
